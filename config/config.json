@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "exampledb",
+    "database": "communityservicedb",
     "host": "localhost",
     "dialect": "mysql"
   },
