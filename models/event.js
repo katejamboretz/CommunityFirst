@@ -1,10 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    date: DataTypes.TEXT,
-    time: DataTypes.TEXT,
-    contactInfo: DataTypes.TEXT
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT
+    },
+    date: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    time: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    contactInfo: {
+      type: DataTypes.TEXT
+    }
   });
   Event.associate = function(models) {
     Event.hasMany(models.Comment, {
