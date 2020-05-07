@@ -1,18 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     description: {
       type: DataTypes.TEXT
     },
     date: {
-      type: DataTypes.TEXT,
+      type: DataTypes.DATE,
       allowNull: false
     },
     time: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TIME,
       allowNull: false
     },
     contactInfo: {
