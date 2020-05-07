@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
     title: {
       type: DataTypes.STRING,
@@ -19,12 +19,12 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT
     }
   });
-  Event.associate = function (models) {
+  Event.associate = function(models) {
     Event.hasMany(models.Comment, {
       onDelete: "cascade"
     });
   };
-  Event.associate = function (models) {
+  Event.associate = function(models) {
     Event.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
