@@ -31,25 +31,25 @@ var API = {
   saveEvent: function(event) {
     return $.ajax({
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/events",
-      data: JSON.stringify(event),
+      data: JSON.stringify(event)
     });
   },
   getEvents: function() {
     return $.ajax({
       type: "GET",
-      url: "api/events",
+      url: "api/events"
     });
   },
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
-      type: "DELETE",
+      type: "DELETE"
     });
-  },
+  }
 };
 
 // refreshEvents gets new events from the db and repopulates the list
@@ -63,7 +63,7 @@ var refreshEvents = function() {
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": event.id,
+          "data-id": event.id
         })
         .append($a);
 
@@ -92,7 +92,7 @@ var handleFormSubmit = function(event) {
     date: $eventDate.val().trim(),
     time: $eventTime.val().trim(),
     contactInfo: $contactInfo.val().trim(),
-    UserId: $userId,
+    UserId: $userId
 
     // need to figure out user id
   };
@@ -124,15 +124,15 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+// var handleDeleteBtnClick = function() {
+//   var idToDelete = $(this)
+//     .parent()
+//     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshEvents();
-  });
-};
+//   API.deleteExample(idToDelete).then(function() {
+//     refreshEvents();
+//   });
+// };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
