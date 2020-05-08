@@ -1,4 +1,5 @@
 var db = require("../models");
+var bcrypt = require("bcrypt");
 
 module.exports = function(app) {
   // Get all events
@@ -10,8 +11,11 @@ module.exports = function(app) {
 
   // Get all users, not tested on front end! May not need this, unless we want generic contacts page
   app.get("/api/users", function(req, res) {
-    db.User.findAll({}).then(function(dbUsers) {
-      res.json(dbUsers);
+    db.User.findAll({
+      include: [db.User]
+    }).then(function(dbUser) {
+      res.json(dbUser);
+      console.log("DB Users: " + dbUser);
     });
   });
 
@@ -22,10 +26,17 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new user, not tested on front end!
   app.post("/api/users", function(req, res) {
-    db.User.create(req.body).then(function(dbUser) {
-      res.json(dbUser);
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
+      db.User.create({
+        userName: req.body.userName,
+        password: hash,
+        email: req.body.email
+      }).then(function(data) {
+        if (data) {
+          res.redirect("/users");
+        }
+      });
     });
   });
 

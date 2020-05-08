@@ -32,22 +32,14 @@ module.exports = function(app) {
       }
     }).then(function(dbUser) {
       res.render("any", {
-        example: dbUser
+        user: dbUser
       });
     });
   });
 
-  // Load example page and pass in an example by id (default in template, may be used in front end now?)
-  app.get("/example/:id", function(req, res) {
-    db.Event.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbEvent) {
-      res.render("example", {
-        example: dbEvent
-      });
-    });
+  // Load user login and create page
+  app.get("/users", function(req, res) {
+    res.render("users");
   });
 
   // Render 404 page for any unmatched routes
