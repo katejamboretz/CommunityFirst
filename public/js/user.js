@@ -1,8 +1,8 @@
 //References to page elements for User Login
-var email = $("#email");
-var username = $("#username");
-var password = $("#password");
-var submitLogin = $("#submitLogin");
+// var email = $("#email");
+// var username = $("#username");
+// var password = $("#password");
+// var submitLogin = $("#submitLogin");
 
 //References to page elements for Create Login
 var newEmail = $("#newEmail");
