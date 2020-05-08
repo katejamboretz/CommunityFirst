@@ -1,21 +1,14 @@
 var db = require("../models");
+
+//bcrypt variables
 var bcrypt = require("bcrypt");
+var saltRounds = 10;
 
 module.exports = function(app) {
   // Get all events
   app.get("/api/events", function(req, res) {
     db.Event.findAll({}).then(function(dbEvents) {
       res.json(dbEvents);
-    });
-  });
-
-  // Get all users, not tested on front end! May not need this, unless we want generic contacts page
-  app.get("/api/users", function(req, res) {
-    db.User.findAll({
-      include: [db.User]
-    }).then(function(dbUser) {
-      res.json(dbUser);
-      console.log("DB Users: " + dbUser);
     });
   });
 
@@ -26,17 +19,42 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/users", function(req, res) {
-    bcrypt.hash(req.body.password, 10, function(err, hash) {
+  // Create a new user
+  app.post("/api/userCreate", function(req, res) {
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       db.User.create({
         userName: req.body.userName,
         password: hash,
         email: req.body.email
       }).then(function(data) {
         if (data) {
-          res.redirect("/users");
+          return res.redirect("/users");
         }
       });
+    });
+  });
+
+  // Check for the correctness of password at Login
+  app.post("/api/userLogin", function(req, res) {
+    db.User.findOne({
+      where: {
+        userName: req.body.userName
+      }
+    }).then(function(user) {
+      if (!user) {
+        console.log("Incorrect user");
+        return res.redirect("/users");
+      } else {
+        bcrypt.compare(req.body.password, user.password, function(err, result) {
+          if (result === true) {
+            console.log("Login is good!");
+            return res.redirect("/");
+          } else {
+            console.log("Incorrect Password!");
+            return res.redirect("/users");
+          }
+        });
+      }
     });
   });
 
