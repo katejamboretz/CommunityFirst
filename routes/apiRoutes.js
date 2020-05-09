@@ -8,6 +8,7 @@ module.exports = function(app) {
   // Get all events
   app.get("/api/events", function(req, res) {
     db.Event.findAll({}).then(function(dbEvents) {
+      console.log("FIND ALL EVENTS SQL QUERY in apiRoutes /api/events get.");
       res.json(dbEvents);
     });
   });
@@ -28,7 +29,8 @@ module.exports = function(app) {
         email: req.body.email
       }).then(function(data) {
         if (data) {
-          return res.redirect("/users");
+          console.log("TEST FOR HITTING userCreate api route worked!");
+          res.redirect("..");
         }
       });
     });
@@ -43,15 +45,15 @@ module.exports = function(app) {
     }).then(function(user) {
       if (!user) {
         console.log("Incorrect user");
-        return res.redirect("/users");
+        res.redirect("/users");
       } else {
         bcrypt.compare(req.body.password, user.password, function(err, result) {
           if (result === true) {
             console.log("Login is good!");
-            return res.redirect("/");
+            res.redirect("/");
           } else {
             console.log("Incorrect Password!");
-            return res.redirect("/users");
+            res.redirect("/users");
           }
         });
       }
