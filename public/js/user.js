@@ -77,7 +77,7 @@ var handleUserLogin = function(User) {
   }
 
   API.getUser(User).then(function() {
-    window.location.replace("http://localhost:3000/");
+    window.location.replace("http://localhost:3000/event-create");
   });
 
   username.val(""), password.val(""), email.val("");

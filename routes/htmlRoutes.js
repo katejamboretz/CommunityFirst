@@ -16,15 +16,28 @@ module.exports = function(app) {
     });
   });
 
+  // Load event creation page
+  app.get("/event-create", function(req, res) {
+    res.render("event-create");
+  });
+
   // Load event page (once made) and pass in an event by id
-  app.get("/api/events/:id", function(req, res) {
+  app.get("/event/:id", function(req, res) {
     db.Event.findOne({
       where: {
         id: req.params.id
       }
     }).then(function(dbEvent) {
+      // console.log(dbEvent.dataValues);
+      var x = {
+        title: dbEvent.dataValues.title,
+        description: dbEvent.dataValues.description,
+        date: dbEvent.dataValues.date,
+        time: dbEvent.dataValues.time,
+        contactInfo: dbEvent.dataValues.contactInfo
+      };
       res.render("event", {
-        example: dbEvent
+        event: x
       });
     });
   });
