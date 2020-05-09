@@ -29,7 +29,7 @@ module.exports = function(app) {
         email: req.body.email
       }).then(function(data) {
         if (data) {
-          console.log("TEST FOR HITTING userCreate api route worked!")
+          console.log("TEST FOR HITTING userCreate api route worked!");
           res.redirect("..");
         }
       });
