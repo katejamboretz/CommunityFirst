@@ -10,5 +10,6 @@ cache:
     - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
-  # - echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+  # need to tell travis fake db to use password for root user.
+  # - mysql -e 'ALTER USER "root"@"localhost" IDENTIFIED BY "password";'
   

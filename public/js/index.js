@@ -44,10 +44,10 @@ var API = {
       url: "api/events"
     });
   },
-  deleteExample: function(id) {
+  deleteEvent: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
+      type: "DELETE",
+      url: "api/event-delete/" + id
     });
   }
 };
@@ -81,8 +81,8 @@ var refreshEvents = function() {
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// handleFormSubmit is called whenever we submit a new event
+// Save the new event to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
@@ -93,10 +93,11 @@ var handleFormSubmit = function(event) {
     time: $eventTime.val().trim(),
     contactInfo: $contactInfo.val().trim(),
     UserId: $userId
+    // ^UserId will need to be pulled from storage after logged in
 
     // need to figure out user id
   };
-  console.log(event);
+  //
 
   if (
     !(
@@ -122,18 +123,19 @@ var handleFormSubmit = function(event) {
   $contactInfo.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-// var handleDeleteBtnClick = function() {
-//   var idToDelete = $(this)
-//     .parent()
-//     .attr("data-id");
+// handleDeleteBtnClick is called when an event's delete button is clicked
+// Remove the event from the db and refresh the list
+var handleDeleteBtnClick = function() {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
 
-//   API.deleteExample(idToDelete).then(function() {
-//     refreshEvents();
-//   });
-// };
+  API.deleteEvent(idToDelete).then(function() {
+    refreshEvents();
+    console.log("delete event test after refreshEvents()");
+  });
+};
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$eventList.on("click", ".delete", handleDeleteBtnClick);

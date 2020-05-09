@@ -1,0 +1,45 @@
+<div id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1>Create an Event</h1>
+                <h2>Enter your event details below and hit submit to create an event.</h2>
+
+                <form class="clearfix mb-4" action="POST">
+                    <div class="form-group">
+                        <label for="event-title">Event Title</label>
+                        <input type="text" id="event-title" class="form-control" aria-describedby="event-title"
+                            placeholder="Enter Event Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Event Description</label>
+                        <textarea class="form-control" id="event-description" aria-describedby="event-description"
+                            placeholder="Enter Event Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Event Date</label>
+                        <textarea class="form-control" id="event-date" aria-describedby="event-date"
+                            placeholder="Enter Event Date (MM/DD/YYYY)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">Event Time</label>
+                        <textarea class="form-control" id="event-time" aria-describedby="event-time"
+                            placeholder="Enter Event Time (HH:MM:SS)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-info">Contact Info</label>
+                        <textarea class="form-control" id="contact-info" aria-describedby="contact-info"
+                            placeholder="Enter Contact Info"></textarea>
+                    </div>
+                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+                <a href="/">← Take me To Events</a>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
