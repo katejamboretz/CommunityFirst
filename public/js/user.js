@@ -77,7 +77,7 @@ var handleUserLogin = function(User) {
   }
 
   API.getUser(User).then(function() {
-    // return;
+    window.location.replace("http://localhost:3000/");
   });
 
   username.val(""), password.val(""), email.val("");

@@ -4,10 +4,14 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.Event.findAll({}).then(function(dbEvents) {
+      console.log(dbEvents[0]);
+      dbEvents.map(function(event) {
+        return { id: event.id, title: event.title };
+      });
       console.log("hit htmlRoutes / get route.");
       res.render("index", {
         msg: "Community Events!",
-        events: dbEvents
+        events: e
       });
     });
   });
