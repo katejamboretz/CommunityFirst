@@ -97,7 +97,7 @@ var handleFormSubmit = function(event) {
 
     // need to figure out user id
   };
-  // console.log(event);
+  //  
 
   if (
     !(
