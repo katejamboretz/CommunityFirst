@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Event.findAll({}).then(function(dbEvents) {
       console.log(dbEvents[0]);
-      dbEvents.map(function(event) {
+      var e = dbEvents.map(function(event) {
         return { id: event.id, title: event.title };
       });
       console.log("hit htmlRoutes / get route.");
