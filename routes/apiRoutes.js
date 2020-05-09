@@ -36,7 +36,7 @@ module.exports = function(app) {
     });
   });
 
-  // Check for the correctness of password at Login 
+  // Check for the correctness of password at Login
   app.post("/api/userLogin", function(req, res) {
     db.User.findOne({
       where: {
