@@ -21,7 +21,7 @@ var $contactInfo = $("#contact-info");
 
 // need to figure out user id
 
-var $userId = "999";
+var $userId = "1";
 
 var $submitBtn = $("#submit");
 var $eventList = $("#events-list");
