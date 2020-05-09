@@ -45,15 +45,15 @@ module.exports = function(app) {
     }).then(function(user) {
       if (!user) {
         console.log("Incorrect user");
-        res.redirect("/users");
+        res.json({});
       } else {
         bcrypt.compare(req.body.password, user.password, function(err, result) {
           if (result === true) {
             console.log("Login is good!");
-            res.redirect("/");
+            res.json({});
           } else {
             console.log("Incorrect Password!");
-            res.redirect("/users");
+            res.json({});
           }
         });
       }
