@@ -7,9 +7,10 @@ var saltRounds = 10;
 module.exports = function(app) {
   // Get all events
   app.get("/api/events", function(req, res) {
-    db.Event.findAll({}).then(function(dbEvents) {
+    db.Event.findAll({ include: [db.User] }).then(function(dbEvents) {
       console.log("FIND ALL EVENTS SQL QUERY in apiRoutes /api/events get.");
       res.json(dbEvents);
+      console.log(dbEvents[0].User);
     });
   });
 
