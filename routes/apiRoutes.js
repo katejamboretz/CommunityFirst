@@ -62,7 +62,7 @@ module.exports = function(app) {
 
   // Delete an event by id, not tested on front end!
   app.delete("/api/event-delete/:id", function(req, res) {
-    console.log("hit delete api route")
+    console.log("hit delete api route");
     db.Event.destroy({
       where: {
         id: req.params.id

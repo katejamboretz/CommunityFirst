@@ -92,12 +92,12 @@ var handleFormSubmit = function(event) {
     date: $eventDate.val().trim(),
     time: $eventTime.val().trim(),
     contactInfo: $contactInfo.val().trim(),
-    UserId: 1
+    UserId: $userId
     // ^UserId will need to be pulled from storage after logged in
 
     // need to figure out user id
   };
-  //  
+  //
 
   if (
     !(
@@ -132,7 +132,7 @@ var handleDeleteBtnClick = function() {
 
   API.deleteEvent(idToDelete).then(function() {
     refreshEvents();
-    console.log("delete event test after refreshEvents()")
+    console.log("delete event test after refreshEvents()");
   });
 };
 
