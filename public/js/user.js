@@ -47,7 +47,7 @@ var handleCreateLogin = function(User) {
   }
 
   API.saveUser(User).then(function() {
-    // return;
+    window.location.replace("http://localhost:3000/Users");
   });
 
   newUsername.val(""), newPassword.val(""), newEmail.val("");

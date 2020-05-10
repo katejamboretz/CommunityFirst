@@ -21,7 +21,8 @@ var $contactInfo = $("#contact-info");
 
 // need to figure out user id
 
-var $userId = "1";
+// eslint-disable-next-line dot-notation
+// var $userId = 1;
 
 var $submitBtn = $("#submit");
 var $eventList = $("#events-list");
@@ -91,8 +92,8 @@ var handleFormSubmit = function(event) {
     description: $eventDescription.val().trim(),
     date: $eventDate.val().trim(),
     time: $eventTime.val().trim(),
-    contactInfo: $contactInfo.val().trim(),
-    UserId: $userId
+    contactInfo: $contactInfo.val().trim()
+    // UserId: $userId
     // ^UserId will need to be pulled from storage after logged in
 
     // need to figure out user id
@@ -113,6 +114,7 @@ var handleFormSubmit = function(event) {
   }
 
   API.saveEvent(event).then(function() {
+    window.location.replace("http://localhost:3000/");
     refreshEvents();
   });
 

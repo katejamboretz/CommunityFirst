@@ -4,7 +4,7 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.Event.findAll({}).then(function(dbEvents) {
-      console.log(dbEvents[0]);
+      // console.log(dbEvents[0]);
       var e = dbEvents.map(function(event) {
         return { id: event.id, title: event.title };
       });

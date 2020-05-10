@@ -10,13 +10,22 @@ module.exports = function(app) {
     db.Event.findAll({ include: [db.User] }).then(function(dbEvents) {
       console.log("FIND ALL EVENTS SQL QUERY in apiRoutes /api/events get.");
       res.json(dbEvents);
-      console.log(dbEvents[0].User);
+      // console.log(dbEvents[0].User);
     });
   });
 
   // Create a new event
   app.post("/api/events", function(req, res) {
-    db.Event.create(req.body).then(function(dbEvent) {
+    var usersID = req.cookies.id;
+    console.log("USERID = " + usersID);
+    db.Event.create({
+      UserId: usersID,
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      time: req.body.time,
+      contactInfo: req.body.contactInfo
+    }).then(function(dbEvent) {
       res.json(dbEvent);
     });
   });
@@ -44,6 +53,8 @@ module.exports = function(app) {
         userName: req.body.userName
       }
     }).then(function(user) {
+      // console.log("User is = " + user.id);
+      res.cookie("id", user.id);
       if (!user) {
         console.log("Incorrect user");
         res.json({});
@@ -54,7 +65,7 @@ module.exports = function(app) {
             res.json({});
           } else {
             console.log("Incorrect Password!");
-            res.json({});
+            res.json({ usersID: req.body.id });
           }
         });
       }

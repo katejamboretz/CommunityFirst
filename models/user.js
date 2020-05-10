@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
-      required: true
+      required: true,
+      isUnique: true
     },
     email: {
       type: DataTypes.TEXT,
