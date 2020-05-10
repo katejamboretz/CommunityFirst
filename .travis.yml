@@ -11,5 +11,5 @@ cache:
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
   # need to tell travis fake db to use password for root user.
-  # - mysql -e 'ALTER USER "root"@"localhost" IDENTIFIED BY "password";'
+  - mysql -e 'ALTER USER "root"@"localhost" IDENTIFIED BY "password";'
   
