@@ -55,7 +55,7 @@ describe("GET /api/events", function() {
           .that.includes({
             title: "First Title",
             description: "First Description",
-            date: "2020-05-09T07:00:00.000Z",
+            date: "2020-05-09T00:00:00.000Z",
             time: "08:30:00",
             contactInfo: "call me",
             UserId: 1
