@@ -2,10 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>Here is a list of events in your community.</h2>
+        <h1 id="index-title">community<b>FIRST</b></h1> 
+        {{!-- i deleted {{msg}} from h1 because it didn't seem necessary to incorporate handlebar stuff here. --}}
+        
+        <h2>What events are in YOUR community?</h2>
         <br>
-        <a href="users">Create Event</a>
+        <button class="redirect" onclick="document.location='users'">Login</button>
         <h3>Events:</h3>
         <ul id="events-list" class="list-group">
           {{#each events}}

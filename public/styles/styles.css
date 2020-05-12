@@ -1,3 +1,82 @@
-.list-group-item {
-  line-height: 2.5;
+html{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+#home {
+  display: flex;
+  justify-content: center;
+  background: url("../images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+
+/* Specific to event-create.handlebars and most of the others */
+.row{
+  background-color: rgba(255,255,255,.9);
+  border: double black .3vw;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Karla', sans-serif;
+  
+}
+.form-group {
+  flex-direction: row;
+  align-items: center;
+  padding: 0 1.75vw 0 1.75vw;
+}
+h1{
+  margin: 2vw 0vw 2vw 0vw;
+  padding: 0 1.75vw 0 1.75vw;
+}
+
+/* Specific to index.handlebars */
+h1#index-title{
+  font-family: 'Monda', sans-serif;
+  font-size: auto;
+  padding: 0;
+  text-align: center;
+}
+h2{
+  width:100%;
+  text-align: center;
+}
+button.redirect{
+  width: 100%;
+  background-color: rgb(52, 105, 253); /* Green */
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 1vw 3vw;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.7vw;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+button.redirect:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/* Specific to UserLogin */
+h1#users-title{
+  font-size: 3vw;
+  text-align: center;
+  margin: .5vw auto;
+}
+
+.formgroup label, .formgroup input{
+  font-size: 1vw;
 }
