@@ -114,7 +114,7 @@ var handleFormSubmit = function(event) {
   }
 
   API.saveEvent(event).then(function() {
-    window.location.replace("http://localhost:3000/");
+    window.location.replace("/");
     refreshEvents();
   });
 
