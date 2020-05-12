@@ -47,7 +47,7 @@ var handleCreateLogin = function(User) {
   }
 
   API.saveUser(User).then(function() {
-    window.location.replace("http://localhost:3000/Users");
+    window.location.replace("/Users");
   });
 
   newUsername.val(""), newPassword.val(""), newEmail.val("");
@@ -77,7 +77,7 @@ var handleUserLogin = function(User) {
   }
 
   API.getUser(User).then(function() {
-    window.location.replace("http://localhost:3000/event-create");
+    window.location.replace("/event-create");
   });
 
   username.val(""), password.val(""), email.val("");
