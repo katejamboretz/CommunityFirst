@@ -54,7 +54,7 @@ module.exports = function(app) {
       }
     }).then(function(user) {
       // console.log("User is = " + user.id);
-      res.cookie("id", user.id);
+      res.cookie("id", user.id, { expire: 360000 + Date.now() });
       if (!user) {
         console.log("Incorrect user");
         res.json({});
