@@ -7,7 +7,12 @@ var API = {
       },
       type: "POST",
       url: "/api/userCreate",
-      data: JSON.stringify(User)
+      data: JSON.stringify(User),
+      error: function(error) {
+        if (error.responseText === "createAlert") {
+          alert("Username already exists.");
+        }
+      }
     });
   },
 
@@ -18,7 +23,14 @@ var API = {
       },
       type: "POST",
       url: "/api/userLogin",
-      data: JSON.stringify(User)
+      data: JSON.stringify(User),
+      error: function(error) {
+        if (error.responseText === "passwordAlert") {
+          alert("Please enter correct password.");
+        } else if (error.responseText === "userAlert") {
+          alert("Please enter correct username.");
+        }
+      }
     });
   }
 };
@@ -47,7 +59,7 @@ var handleCreateLogin = function(User) {
   }
 
   API.saveUser(User).then(function() {
-    window.location.replace("http://localhost:3000/Users");
+    window.location.replace("/Users");
   });
 
   newUsername.val(""), newPassword.val(""), newEmail.val("");
@@ -77,7 +89,7 @@ var handleUserLogin = function(User) {
   }
 
   API.getUser(User).then(function() {
-    window.location.replace("http://localhost:3000/event-create");
+    window.location.replace("/event-create");
   });
 
   username.val(""), password.val(""), email.val("");
