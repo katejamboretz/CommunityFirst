@@ -22,8 +22,7 @@ describe("GET /api/events", function() {
   it("should find all examples", function(done) {
     // Add some examples to the db to test with
     db.User.bulkCreate([
-      { id: "1", userName: "Aaron", email: "fake@gmail.com", password: "1234" },
-      { id: "2", userName: "Hung", email: "fake2@gmail.com", password: "5678" }
+      { id: "1", userName: "Aaron", email: "fake@gmail.com", password: "1234" }
     ]);
     db.Event.bulkCreate([
       {
