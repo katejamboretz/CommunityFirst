@@ -7,7 +7,12 @@ var API = {
       },
       type: "POST",
       url: "/api/userCreate",
-      data: JSON.stringify(User)
+      data: JSON.stringify(User),
+      error: function(error) {
+        if (error.responseText === "createAlert") {
+          alert("Username already exists.");
+        }
+      }
     });
   },
 
@@ -18,7 +23,14 @@ var API = {
       },
       type: "POST",
       url: "/api/userLogin",
-      data: JSON.stringify(User)
+      data: JSON.stringify(User),
+      error: function(error) {
+        if (error.responseText === "passwordAlert") {
+          alert("Please enter correct password.");
+        } else if (error.responseText === "userAlert") {
+          alert("Please enter correct username.");
+        }
+      }
     });
   }
 };

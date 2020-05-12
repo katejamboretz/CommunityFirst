@@ -32,17 +32,28 @@ module.exports = function(app) {
 
   // Create a new user
   app.post("/api/userCreate", function(req, res) {
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      db.User.create({
-        userName: req.body.userName,
-        password: hash,
-        email: req.body.email
-      }).then(function(data) {
-        if (data) {
-          console.log("TEST FOR HITTING userCreate api route worked!");
-          res.redirect("..");
-        }
-      });
+    db.User.findOne({
+      where: {
+        userName: req.body.userName
+      }
+    }).then(function(user) {
+      if (user) {
+        res.status(500).send("createAlert");
+        console.log("User already exists");
+      } else {
+        bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+          db.User.create({
+            userName: req.body.userName,
+            password: hash,
+            email: req.body.email
+          }).then(function(data) {
+            if (data) {
+              console.log("TEST FOR HITTING userCreate api route worked!");
+              res.redirect("..");
+            }
+          });
+        });
+      }
     });
   });
 
@@ -54,18 +65,19 @@ module.exports = function(app) {
       }
     }).then(function(user) {
       // console.log("User is = " + user.id);
-      res.cookie("id", user.id, { expire: 360000 + Date.now() });
       if (!user) {
         console.log("Incorrect user");
-        res.json({});
+        res.status(500).send("userAlert");
       } else {
+        res.cookie("id", user.id, { expire: 360000 + Date.now() });
         bcrypt.compare(req.body.password, user.password, function(err, result) {
           if (result === true) {
+            console.log("RESULT: " + result);
             console.log("Login is good!");
             res.json({});
           } else {
+            res.status(500).send("passwordAlert");
             console.log("Incorrect Password!");
-            res.json({ usersID: req.body.id });
           }
         });
       }
