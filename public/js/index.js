@@ -117,7 +117,7 @@ var handleFormSubmit = function(event) {
   $eventTitle.val("");
   $eventDescription.val("");
   $eventDate.val("");
-  $eventTime.val("")
+  $eventTime.val("");
 };
 
 // handleDeleteBtnClick is called when an event's delete button is clicked
