@@ -17,6 +17,7 @@ module.exports = function(app) {
   // Create a new event
   app.post("/api/events", function(req, res) {
     var usersID = req.cookies.id;
+    var emailID = req.cookies.email;
     console.log("USERID = " + usersID);
     db.Event.create({
       UserId: usersID,
@@ -24,7 +25,7 @@ module.exports = function(app) {
       description: req.body.description,
       date: req.body.date,
       time: req.body.time,
-      contactInfo: req.body.contactInfo
+      contactInfo: emailID
     }).then(function(dbEvent) {
       res.json(dbEvent);
     });
@@ -70,6 +71,7 @@ module.exports = function(app) {
         res.status(500).send("userAlert");
       } else {
         res.cookie("id", user.id, { expire: 360000 + Date.now() });
+        res.cookie("email", user.email, { expire: 360000 + Date.now() });
         bcrypt.compare(req.body.password, user.password, function(err, result) {
           if (result === true) {
             console.log("RESULT: " + result);
