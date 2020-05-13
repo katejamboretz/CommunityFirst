@@ -25,6 +25,7 @@ module.exports = function(app) {
       description: req.body.description,
       date: req.body.date,
       time: req.body.time,
+      location: req.body.location,
       contactInfo: emailID
     }).then(function(dbEvent) {
       res.json(dbEvent);
