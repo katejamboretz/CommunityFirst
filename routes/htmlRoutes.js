@@ -39,6 +39,7 @@ module.exports = function(app) {
         description: dbEvent.dataValues.description,
         date: dbEvent.dataValues.date,
         time: dbEvent.dataValues.time,
+        location: dbEvent.dataValues.location,
         contactInfo: dbEvent.dataValues.contactInfo
       };
       res.render("event", {

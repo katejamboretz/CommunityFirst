@@ -17,6 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     contactInfo: {
       type: DataTypes.TEXT
+    },
+    location: {
+      type: DataTypes.TEXT
     }
   });
   Event.associate = function(models) {
