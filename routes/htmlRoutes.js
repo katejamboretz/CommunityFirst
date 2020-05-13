@@ -28,7 +28,12 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbEvent) {
-      // console.log(dbEvent.dataValues);
+      // db.Users.findOne({
+      //   where: {
+      //     id: dbEvent.dataValues.UserId
+      //   }
+      // }).then(function(dbUser) {
+      console.log(dbEvent);
       var x = {
         title: dbEvent.dataValues.title,
         description: dbEvent.dataValues.description,
@@ -39,6 +44,7 @@ module.exports = function(app) {
       res.render("event", {
         event: x
       });
+      // });
     });
   });
 
