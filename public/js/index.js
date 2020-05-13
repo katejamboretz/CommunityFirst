@@ -16,9 +16,6 @@ var $eventDate = $("#event-date");
 // grab event time from form
 var $eventTime = $("#event-time");
 
-// grab event contact-info from form
-var $contactInfo = $("#contact-info");
-
 // need to figure out user id
 
 // eslint-disable-next-line dot-notation
@@ -91,8 +88,7 @@ var handleFormSubmit = function(event) {
     title: $eventTitle.val().trim(),
     description: $eventDescription.val().trim(),
     date: $eventDate.val().trim(),
-    time: $eventTime.val().trim(),
-    contactInfo: $contactInfo.val().trim()
+    time: $eventTime.val().trim()
     // UserId: $userId
     // ^UserId will need to be pulled from storage after logged in
 
@@ -100,13 +96,13 @@ var handleFormSubmit = function(event) {
   };
   //
 
+  // eslint-disable-next-line prettier/prettier
   if (
     !(
       event.title &&
       event.description &&
       event.date &&
-      event.time &&
-      event.contactInfo
+      event.time 
     )
   ) {
     alert("You must complete all fields before submitting an event!");
@@ -122,7 +118,6 @@ var handleFormSubmit = function(event) {
   $eventDescription.val("");
   $eventDate.val("");
   $eventTime.val("");
-  $contactInfo.val("");
 };
 
 // handleDeleteBtnClick is called when an event's delete button is clicked
